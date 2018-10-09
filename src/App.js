@@ -1,25 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Orders from "./components/orders";
 
 class App extends Component {
+  callItem() {
+    this.refs.orders.btnAdd();
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <button type="submit" onClick={this.callItem.bind(this)}>
+          Add
+        </button>
+        <Orders ref="orders" />
       </div>
     );
   }
