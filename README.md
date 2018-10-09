@@ -4,3 +4,9 @@ When order is ready just click on order box and order box will shift to Ready si
 
 ## Upcoming Functions
 Support for Backend with mongoDb. Much better CSS.
+
+#### Installation
+```
+npm install
+npm start
+```
