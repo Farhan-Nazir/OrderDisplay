@@ -4,19 +4,32 @@ class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: 1
+      orderNo: 1,
+      status: ""
     };
   }
+  componentDidMount() {
+    const url = "http://localhost:5000/api/orders"; // site that doesn’t send Access-Control-*
+    fetch(url)
+      .then(res => res.text())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(() =>
+        console.log("Can’t access " + url + " response. Blocked by browser?")
+      );
+  }
+
   btnAdd() {
     let inprogressItems = document.getElementById("inprogress-items");
     let newDiv = document.createElement("button");
     this.setState(prevState => {
-      return { orders: prevState.orders + 1 };
+      return { orderNo: prevState.orderNo + 1 };
     });
-    newDiv.id = this.state.orders;
+    newDiv.id = this.state.orderNo;
 
     newDiv.appendChild(
-      document.createTextNode("Order #: " + this.state.orders)
+      document.createTextNode("Order #: " + this.state.orderNo)
     );
     newDiv.onclick = () => {
       let readyItems = document.getElementById("readyItems");
